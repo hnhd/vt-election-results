@@ -1,0 +1,221 @@
+district,dist_abbrev
+Addison,ADD
+Addison 1,ADD-1
+Addison 2,ADD-2
+Addison 3,ADD-3
+Addison 4,ADD-4
+Addison 4-1,ADD 4-1
+Addison 4-2,ADD 4-2
+Addison 5,ADD-5
+Addison-Rutland,ADD-RUT
+Addison-Rutland 1,ADD-RUT-1
+Addison-Rutland 2,ADD-RUT-2
+Bennington,BEN
+Bennington 1,BEN-1
+Bennington 2-1,BEN-2-1
+Bennington 2-2,BEN-2-2
+Bennington 2-3,BEN-2-3
+Bennington 2-4,BEN-2-4
+Bennington 3,BEN-3
+Bennington 4,BEN-4
+Bennington 5,BEN-5
+Bennington-Rutland,BEN-RUT
+Bennington-Rutland 1,BEN-RUT-1
+Caledonia,CAL
+Caledonia 1,CAL-1
+Caledonia 2,CAL-2
+Caledonia 3,CAL-3
+Caledonia 4,CAL-4
+Caledonia-Washington,CAL-WAS
+Caledonia-Washington 1,CAL-WAS-1
+Chittdenden 7-1,CHT-7-1
+Chittdenden 7-2,CHT-7-2
+Chittdenden 8,CHT-8
+Chittenden,CHT
+Chittenden 1,CHT-1
+Chittenden 1-1,CHT-1-1
+Chittenden 1-2,CHT-1-2
+Chittenden 1-3,CHT-1-3
+Chittenden 10,CHT-10
+Chittenden 2,CHT-2
+Chittenden 2-1,CHT-2-1
+Chittenden 2-2,CHT-2-2
+Chittenden 2-3,CHT-2-3
+Chittenden 2-4,CHT-2-4
+Chittenden 3,CHT-3
+Chittenden 3-1,CHT-3-1
+Chittenden 3-10,CHT-3-10
+Chittenden 3-2,CHT-3-2
+Chittenden 3-3,CHT-3-3
+Chittenden 3-4,CHT-3-4
+Chittenden 3-5,CHT-3-5
+Chittenden 3-6,CHT-3-6
+Chittenden 3-7,CHT-3-7
+Chittenden 3-8,CHT-3-8
+Chittenden 3-9,CHT-3-9
+Chittenden 4,CHT-4
+Chittenden 4-1,CHT-4-1
+Chittenden 4-2,CHT-4-2
+Chittenden 5,CHT-5
+Chittenden 5-1,CHT-5-1
+Chittenden 5-2,CHT-5-2
+Chittenden 5-3,CHT-5-3
+Chittenden 5-4,CHT-5-4
+Chittenden 6,CHT-6
+Chittenden 6-1,CHT-6-1
+Chittenden 6-2,CHT-6-2
+Chittenden 6-3,CHT-6-3
+Chittenden 6-4,CHT-6-4
+Chittenden 6-5,CHT-6-5
+Chittenden 6-6,CHT-6-6
+Chittenden 6-7,CHT-6-7
+Chittenden 7-1,CHT-7-1
+Chittenden 7-10,CHT-7-10
+Chittenden 7-2,CHT-7-2
+Chittenden 7-3,CHT-7-3
+Chittenden 7-4,CHT-7-4
+Chittenden 7-5,CHT-7-5
+Chittenden 7-6,CHT-7-6
+Chittenden 7-7,CHT-7-7
+Chittenden 7-8,CHT-7-8
+Chittenden 7-9,CHT-7-9
+Chittenden 8,CHT-8
+Chittenden 8-1,CHT-8-1
+Chittenden 8-2,CHT-8-2
+Chittenden 8-3,CHT-8-3
+Chittenden 9,CHT-9
+Chittenden 9-1,CHT-9-1
+Chittenden 9-2,CHT-9-2
+Essex,ESS
+Essex-Caldeonia-Orleans,ESS-CAL-ORL
+Essex-Caledonia,ESS-CAL
+Essex-Caledonia 1,ESS-CAL-1
+Essex-Caledonia 2,ESS-CAL-2
+Essex-Caledonia-Orleans,ESS-CAL-ORL
+Essex-Orleans,ESS-ORL
+Franklin,FRK
+Franklin 1,FRK-1
+Franklin 2,FRK-2
+Franklin 3,FRK-3
+Franklin 3-1,FRK-3-1
+Franklin 3-2,FRK-3-2
+Franklin 4,FRK-4
+Franklin 5,FRK-5
+Franklin 5-1,FRK-5-1
+Franklin 5-2,FRK-5-2
+Franklin 6,FRK-6
+Franklin 7,FRK-7
+Franklin-Grand Isle 1,FRK-GRI-1
+Grand Isle,GRI
+Grand Isle 1,GRI-1
+Grand Isle-Chittenden,GRI-CHT
+Grand Isle-Chittenden 1,GRI-CHT-1
+Grand Isle-Chittenden 1-1,GRI-CHT-1-1
+Lamoille,LAM
+Lamoille 1,LAM-1
+Lamoille 2,LAM-2
+Lamoille 2-1,LAM-2-1
+Lamoille 2-2,LAM-2-2
+Lamoille 3,LAM-3
+Lamoille 4,LAM-4
+Lamoille-Washington,LAM-WAS
+Lamoille-Washington 1,LAM-WAS-1
+Orange,ORG
+Orange 1,ORG-1
+Orange 2,ORG-2
+Orange 3,ORG-3
+Orange 4,ORG-3
+Orange-Addison 1,ORG-ADD-1
+Orange-Caledonia,ORG-CAL
+Orange-Caledonia 1,ORG-CAL-1
+Orange-Washington-Addison,ORG-WAS-ADD
+Orleans,ORL
+Orleans 1,ORL-1
+Orleans 2,ORL-2
+Orleans-Caledonia,ORL-CAL
+Orleans-Caledonia 1,ORL-CAL-1
+Orleans-Franklin 1,ORL-FRK-1
+Orleans-Lamoille,ORL-LAM
+Rutland,RUT
+Rutland 1,RUT-1
+Rutland 1-1,RUT-1-1
+Rutland 1-2,RUT-1-2
+Rutland 2,RUT-2
+Rutland 3,RUT-3
+Rutland 4,RUT-4
+Rutland 5,RUT-5
+Rutland 5-1,RUT-5-1
+Rutland 5-2,RUT-5-2
+Rutland 5-3,RUT-5-3
+Rutland 5-4,RUT-5-4
+Rutland 6,RUT-6
+Rutland 6-1,RUT-6-1
+Rutland 6-2,RUT-6-2
+Rutland 6-3,RUT-6-3
+Rutland 6-4,RUT-6-4
+Rutland 7,RUT-7
+Rutland 8,RUT-8
+Rutland-Benington 1,RUT-BEN-1
+Rutland-Bennington,RUT-BEN
+Rutland-Windsor 1,RUT-WND-1
+Rutland-Windsor 2,RUT-WND-2
+Shelburne 5-2,SLB-5-2
+Washington,WAS
+Washington 1,WAS-1
+Washington 2,WAS-2
+Washington 3,WAS-3
+Washington 3-1,WAS-3-1
+Washington 3-2,WAS-3-2
+Washington 3-3,WAS-3-3
+Washington 4,WAS-4
+Washington 4-1,WAS-4-1
+Washington 4-2,WAS-4-2
+Washington 5,WAS-5
+Washington 6,WAS-6
+Washington 7,WAS-7
+Washington-Addison 1,WAS-ADD-1
+Washington-Chittenden,WAS-CHT
+Washington-Chittenden 1,WAS-CHT-1
+Washington-Lamoille 1-1,WAS-LAM-1-1
+Windham,WHM
+Windham 1,WHM-1
+Windham 2,WHM-2
+Windham 2-1,WHM-2-1
+Windham 2-2,WHM-2-2
+Windham 2-3,WHM-2-3
+Windham 3,WHM-3
+Windham 3-1,WHM-3-1
+Windham 3-2,WHM-3-2
+Windham 3-3,WHM-3-3
+Windham 4,WHM-4
+Windham 5,WHM-5
+Windham 6,WHM-6
+Windham Bennington Windosr 1,WHM-BEN-WND-1
+Windham-Bennington,WHM-BEN
+Windham-Bennington 1,WHM-BEN-1
+Windham-Bennington-Windsor,WHM-BEN-WND
+Windham-Bennington-Windsor 1,WHM-BEN-WND-1
+Windsor,WND
+Windsor 1,WND-1
+Windsor 1-1,WND-1-1
+Windsor 1-2,WND-1-2
+Windsor 2,WND-2
+Windsor 2-1,WND-2-1
+Windsor 2-2,WND-2-2
+Windsor 2-3,WND-2-3
+Windsor 3,WND-3
+Windsor 3-1,WND-3-1
+Windsor 3-2,WND-3-2
+Windsor 4,WND-4
+Windsor 4-1,WND-4-1
+Windsor 4-2,WND-4-2
+Windsor 5,WND-5
+Windsor 6,WND-6
+Windsor 6-1,WND-6-1
+Windsor 6-2,WND-6-2
+Windsor-Orange 1,WND-ORG-1
+Windsor-Orange 2,WND-ORG-2
+Windsor-Rutland,WND-RUT
+Windsor-Rutland 1,WND-RUT-1
+Windsor-Rutland 2,WND-RUT-2
+Windsor-Windham 1-1,WND-WHM-1-1
