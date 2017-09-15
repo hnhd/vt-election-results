@@ -1,6 +1,7 @@
 library(stringr)
 library(httr) #for GET
 
+setwd('Election Results/')
 # read the cleaned index
 vt.titles <- na.omit(read.csv('../Index/index_titles.csv'))
 
@@ -16,7 +17,7 @@ vt.titles$office <- ifelse(grepl("President", vt.titles$title), "President",
                     ifelse(grepl("U.S. Senate", vt.titles$title), "U.S. Senate", 
                     ifelse(grepl("U.S. House", vt.titles$title), "U.S. House", 
                     ifelse(grepl("Lieutenant Governor", vt.titles$title), "Lieutenant Governor", 
-                    ifelse(grepl("Governor", vt.titles$title), "Governor", 
+                    ifelse(grepl("Governor", vt.titles$title), "GovSernor", 
                     ifelse(grepl("Treasurer", vt.titles$title), "Treasurer",
                     ifelse(grepl("Secretary of State", vt.titles$title), "Secretary of State", 
                     ifelse(grepl("Auditor", vt.titles$title), "Auditor", 
@@ -31,7 +32,6 @@ write.csv(vt.titles, '../Index/index_value.csv')
 # subset to the openelections range
 vt.cleaned <- subset(vt.titles, office != "Local Election" & year >= 2000, -title)
 
-subset(vt.cleaned, election_value == 68297)
 # remove 'County' from districts containing 'County' in their title
 vt.cleaned$district <- trimws(ifelse(grepl('County', vt.cleaned$district), str_replace(vt.cleaned$district, 'County', ''), vt.cleaned$district))
 
@@ -42,7 +42,7 @@ index.office <- read.csv('../Index/index_office.csv')
 vt.cleaned <- merge(vt.cleaned, index.office, by = "office", all = TRUE)
 
 # load and merge the district abbreviations into the cleaned index
-index.dist <- read.csv('dist_index_2000+.csv')
+index.dist <- read.csv('../Index/index_district.csv')
 vt.cleaned$district <- trimws(vt.cleaned$district)
 index.dist$dist_abbrev <- trimws(index.dist$dist_abbrev)
 vt.cleaned <- merge(vt.cleaned, index.dist, by = "district", all = TRUE)
@@ -51,6 +51,8 @@ vt.cleaned <- merge(vt.cleaned, index.dist, by = "district", all = TRUE)
 index.party <- data.frame(
   "party" = c(na.omit(unique(vt.cleaned$party))), 
   "party_abbrev" = c('dem', 'lbu', 'prg', 'rep'))
+write.csv(index.party, '../Index/index_party.csv')
+
 vt.cleaned <- merge(vt.cleaned, index.party, by = "party", all = TRUE)
 
 # remove values where atg district is populated
