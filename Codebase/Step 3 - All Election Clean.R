@@ -59,6 +59,7 @@ tables <- list()
 
 # loop through and build the merged-cleaned tables
 for (i in 1:length(raw.instruction$year)) {
+
 # load the file in
 raw_table <- read.csv(index.files[i], stringsAsFactors = FALSE)
 
@@ -82,24 +83,30 @@ if(nrow(raw_table) == 1 | ("No.Nomination" %in% names(raw_table))) {
 # create an index table to load in the 
 index.table <- data.frame(
   "party" = unname(unlist(raw_table[1,])),
-  "candidate" = str_sub(colnames(raw_table), 1, nchar(colnames(raw_table)))
+  "candidate" = str_sub(colnames(raw_table), 1, nchar(colnames(raw_table))),
+  stringsAsFactors = FALSE
 )
-index.table <- index.table[-c(1,2),]
+index.table$party[index.table$party == ""] <- NA
+index.table <- index.table[!(index.table$candidate %in% c("City.Town", "Pct")),]
+index.table$party <- ifelse(is.na(index.table$party), index.table$candidate, index.table$party)
 
 # add the candidates party, conditional upon being a party primary
 if(raw.instruction$election_type[i] == 'General'){
   intermediate_table$party <- index.table$party[match(intermediate_table$variable, index.table$candidate)]
 } else if (raw.instruction$election_type[i] == 'Primary') {
-  intermediate_table$party <- raw.instruction$party[i]
+  intermediate_table$party <- NA
 }
 
 # add election year, district, and election type
 intermediate_table$year <- raw.instruction$year[i]
 intermediate_table$district <- raw.instruction$district[i]
-intermediate_table$election_type <- raw.instruction$election_type[i]
+intermediate_table$election_type <- ifelse(raw.instruction$election_type[i] == 'Primary', paste0(raw.instruction$party[i], ' Primary'), raw.instruction$election_type[i])
 
 # rename the columns
 colnames(intermediate_table) <- c('City/Town', 'Precinct', 'Candidate', 'Votes', 'Party', 'Year', 'District', 'Election Type')
+
+# clean party name
+intermediate_table$Party <- str_replace_all(intermediate_table$Party, '[\\.]', ' ')
 
 # clean the candidate names (must be done after loading in the party)
 intermediate_table$Candidate <- str_replace_all(intermediate_table$Candidate, '[\\.]{2}', '-.')
@@ -117,7 +124,7 @@ intermediate_table$`City/Town`<- gsub("St\\.", "Saint", intermediate_table$`City
 intermediate_table$Office <- raw.instruction$office[i]
 
 # convert the abbreviations into the full names
-index.office <- read.csv('../Index/index_office.csv')
+index.office <- read.csv('../Index/index_office.csv', stringsAsFactors = FALSE)
 intermediate_table$Office <- index.office$office[match(intermediate_table$Office, index.office$office_abbrev)]
 intermediate_table$LoopValue <- i
 
@@ -142,9 +149,19 @@ tables[[i]] <- intermediate_table
 # Merge the Dataframes and Export
 # ======
 
+# write a function that ensures dataframe doesn't have factors
+rbind_clean <- function(...){rbind(..., stringsAsFactors = FALSE)}
+
 # merge and write the combined tables
-merged.table <- do.call(rbind, tables)
-# tst <- subset(merged.table, LoopValue == 1512)
+merged.table <- do.call(rbind_clean, tables)
+
+# fill in total/write-in/blanks/spoiled to make sorting by party easier
+#merged.table$Party <- ifelse(is.na(merged.table$Party) & merged.table$`Election Type` == "General", merged.table$Candidate, merged.table$Party)
+
+sample <- subset(merged.table, LoopValue == "1521")
+
+View(reshape2::dcast(sample, `City/Town`+Precinct ~ Candidate, value.var = "Votes"))
+View(reshape2::dcast(sample, `City/Town`+Precinct ~ Party, value.var = "Votes"))
 
 rm(list=setdiff(ls(), c("tables", "merged.table")))
 
@@ -187,10 +204,10 @@ index.value$district <- str_replace_all(index.value$district, "Windham Benningto
 gnl_swd_only_merged <- subset(merged.table, `Election Type` == "General" & `Office` != 'State Senator' & `Office` != 'State Representative')
 gnl_swd_only_index <- subset(index.value, election_type == "General" & office != 'State Senator' & office != 'State Representative')
 remerge[[1]] <- merge(gnl_swd_only_merged, gnl_swd_only_index, by.x = c("Year", "Office", "District"), by.y = c("year", "office", "district"), all.x = T, all.y = F)[1:13]
-  
+
 # subset to just primary statewide
-pmy_swd_only_merged <- subset(merged.table, `Election Type` == "Primary" & `Office` != 'State Senator' & `Office` != 'State Representative')
-pmy_swd_only_index <- subset(index.value, election_type == "Primary" & office != 'State Senator' & office != 'State Representative')
+pmy_swd_only_merged <- subset(merged.table, str_detect(merged.table$`Election Type`, ".*Primary") & `Office` != 'State Senator' & `Office` != 'State Representative')
+pmy_swd_only_index <- subset(index.value, str_detect(index.value$election_type, ".*Primary") & office != 'State Senator' & office != 'State Representative')
 remerge[[2]] <-merge(pmy_swd_only_merged, pmy_swd_only_index, by.x = c("Year", "Office", "District", "Party"), by.y = c("year", "office", "district", "party"), all.x = T, all.y = F)[1:13]
  
 # subset to just primary state senator and state rep
@@ -199,8 +216,8 @@ gnl_sdhd_only_index <- subset(index.value, election_type == "General" & (office 
 remerge[[3]] <- merge(gnl_sdhd_only_merged, gnl_sdhd_only_index, by.x = c("Year", "Office", "DistLong"), by.y = c("year", "office", "district"), all.x = T, all.y = F)[1:13]
 
 # subset to just primary state senator and state rep
-pmy_sdhd_only_merged <- subset(merged.table, `Election Type` == "Primary" & (`Office` == 'State Senator' | `Office` == 'State Representative'))
-pmy_sdhd_only_index <- subset(index.value, election_type == "Primary" & (office == 'State Senator' | office == 'State Representative'))
+pmy_sdhd_only_merged <- subset(merged.table, str_detect(merged.table$`Election Type`, ".*Primary") & (`Office` == 'State Senator' | `Office` == 'State Representative'))
+pmy_sdhd_only_index <- subset(index.value, str_detect(index.value$election_type, ".*Primary") & (office == 'State Senator' | office == 'State Representative'))
 remerge[[4]] <- merge(pmy_sdhd_only_merged, pmy_sdhd_only_index, by.x = c("Year", "Office", "DistLong", "Party"), by.y = c("year", "office", "district", "party"), all.x = T, all.y = F)[1:13]
 
 # remerge the data frames
